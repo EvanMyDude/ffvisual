@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Matchups</title>
+  <meta name="description" content="Live fantasy football matchups from Sleeper, built for a second monitor.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307080b'/%3E%3Cpath d='M5 22 L12 15 L17 19 L27 9' fill='none' stroke='%231fae80' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="clock"><span id="clock-time" class="clock-time"></span><span id="clock-date" class="clock-date"></span></div>
+    <div class="topbar-right">
+      <span id="degraded" class="degraded" hidden>Projections offline · scores still live</span>
+      <span id="sync" class="sync" data-state="warn"><i></i><span class="sync-text">Connecting…</span></span>
+      <button id="log-btn" class="log-btn" type="button" aria-expanded="false" aria-controls="log">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4h10M3 8h10M3 12h6" /></svg>
+        Scoring Log
+      </button>
+    </div>
+  </header>
+
+  <main id="grid" class="grid"></main>
+
+  <div id="boot" class="boot">
+    <i class="boot-dot"></i>
+    <p id="boot-text">Connecting to Sleeper…</p>
+  </div>
+
+  <div id="ticker" class="ticker" aria-live="polite"></div>
+
+  <div id="log" class="log" hidden>
+    <div class="log-backdrop"></div>
+    <aside class="log-panel" role="dialog" aria-modal="true" aria-labelledby="log-title">
+      <header class="log-head">
+        <div>
+          <h2 id="log-title">Scoring Log</h2>
+          <p class="log-sub">This week, newest first. Times are when this page saw the change.</p>
+        </div>
+        <button class="log-close" type="button" aria-label="Close scoring log">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+        </button>
+      </header>
+      <div class="log-list"></div>
+    </aside>
+  </div>
+</body>
+</html>
